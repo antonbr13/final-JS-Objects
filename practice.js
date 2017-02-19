@@ -1,9 +1,20 @@
+/*jshint esversion: 6 */
+// { "esnext": true }
+/* jshint esnext: true */
+
+
 //Once you complete a problem, open up Chrome and check the answer in the console.
 
 
 //Create an object called me. Give it a key of name with the value being your name, and another key of age with the value being your age. Then alert your name using dot notation.
 
   //Code here
+
+  var me = {
+     name : "anton",
+     age  : 26
+  };
+  alert(me.name);
 
 
 
@@ -16,16 +27,29 @@
 //Make a 'favoriteThings' object that contains the following keys: band, food, person, book, movie, holiday. Have the values to those keys be your favorite thing in that category.
 
   //Code here
-
+let favoriteThings = {
+   band      : 'Dead Prez',
+   food      : 'apples',
+   person    : 'Ariana',
+   book      : 'Understand Power',
+   movie     : 'Century of the Self',
+   holiday   : 'Labor Day'
+};
 
 //After you've made your object, add another key named 'car' with the value being your favorite car and then another key named 'brand' with the value being your favorite brand.
 
   //Code here
+  favoriteThings.car = "Public Transit";
+
+  favoriteThings.brand = 'Vibrams';
 
 
 //Now change the value of the food key in your favoriteThings object to be 'Chicken Nuggets' and change the value of the book key in your favoriteThings object to be 'Harry Potter'.
 
   //Code here
+
+  favoriteThings.food = 'Chicken Nuggets';
+  favoriteThings.book = 'Harry Potter';
 
 
 
@@ -43,6 +67,16 @@ Using dot notation, add another key (or property) to your backPack object
 that is named color, with the value being the color of your backpack. */
 
   //Code here
+
+  var backPack = {};
+
+  var item = 'firstPocket';
+
+  backPack[item] = 'chapstick';
+
+  backPack.color = 'black';
+
+alert(backPack);
 
 //After you do the above, alert your entire backPack object.
 
@@ -66,9 +100,24 @@ Instead, console.log your whole backPack object and then check out the console. 
 
   //Code Here
 
+var alsoMe = {
+   name      : 'Anton',
+   age       : 26,
+   height    : '5.11',
+   gender    : 'Male',
+   married   : 'Nope',
+   eyeColor  : 'Blue',
+   hairColor : 'Brown'
+};
+
+
 //Now, loop through your object and alert every value. *Tyler --> 24 --> 6'0 --> Male, etc etc
 
   //Code Here
+
+  for (let key in alsoMe) {
+       alert(alsoMe[key])
+  }
 
 
 
@@ -82,9 +131,27 @@ Instead, console.log your whole backPack object and then check out the console. 
 
   //Code Here
 
+  let album = {
+      "Warning"     : 3.5,
+      "Ready to Die": 3.2,
+      "The What"    : 4.1,
+      "Respect"     : 3.1,
+      "Who Shot Ya" : 4.5
+ };
+
 //Now, loop through your album object alerting every song title individually.
 
   //Code Here
+
+  for (let key in album) {
+         alert(Object.keys(album));
+   }
+
+
+  // OR -----------
+
+   console.log(Object.keys(album));
+   // ----> ["Warning", "Ready to Die", "The What", "Respect", "Who Shot Ya"]
 
 
 
@@ -98,9 +165,25 @@ Instead, console.log your whole backPack object and then check out the console. 
 
   //Code Here
 
+  let states = {
+     Washington   : 3500000,
+     California   : 35000000,
+     Oregon       : 2500000,
+     Alaska       : 350000,
+     Colorado     : 15000
+
+ };
+
 //Now, loop through your states object and if the states population is greater than 30K, alert that state.
 
   //Code Here
+
+for (let population in states) {
+      if (states[population] > 30000) {
+         alert(population)
+         console.log(population);
+      }
+   }
 
 
 
@@ -123,9 +206,21 @@ that each value is truthy. If it's not truthy, remove it from the object. */
 
   //Code Here
 
+  for (let key in user1) {
+   if (!user1[key]) {
+      delete user1[key];
+   }
+}
+
 //Once you get your truthy Object, Change the remaining values in the object to be specific to you (name: 'your name', username: 'your username'), rather than my information.
 
   //Code Here
+
+  user1.name = "Anton";
+  user1.pwHash = "dsfiajsdf97";
+  user1.username = "antonbr2345";
+
+
 
 
 
@@ -150,10 +245,13 @@ var user2 = {
 // name -> 'Tyler S. McGinnis', email -> 'tyler.mcginnis@devmounta.in'. Make that change.
 
   //Code Here
-
+user2.name = 'Tyler S. McGinnis';
+user2.email = 'tyler.mcginnis@devmounta.in'
 //Now call the sayEmail method that's on the user object which will alert the users email
 
   //Code Here
+
+  user2.sayEmail();
 
 
 
@@ -167,6 +265,19 @@ var user2 = {
 
   //Code Here
 
+
+let methodCollection = {};
+
+methodCollection.alertHello = function() {
+   alert("hello");
+};
+
+methodCollection.logHello = function() {
+   console.log("hello");
+};
+
+
+
 /*Now add two methods (functions that are properties on objects) to your methodCollection
 object. One called 'alertHello' which alerts 'hello' and another method called logHello
  which logs 'hello' to the console. */
@@ -177,6 +288,8 @@ object. One called 'alertHello' which alerts 'hello' and another method called l
 
   //Code Here
 
+methodCollection.alertHello();
+methodCollection.logHello();
 
 
 //NEXT PROBLEM
@@ -188,6 +301,17 @@ object. One called 'alertHello' which alerts 'hello' and another method called l
 
   //Code Here
 
+  let makePerson = (name, birthday, ssn) => {
+     let person = {
+        name     :  name,
+        birthday : birthday,
+        ssn      : ssn
+     };
+
+     console.log(person);
+      return person;
+ };
+
 
 
 //NEXT PROBLEM
@@ -197,6 +321,17 @@ object. One called 'alertHello' which alerts 'hello' and another method called l
 // Create a function called makeCard which takes in cardNumber, expirationDate, and securityCode to make a Credit Card object and returns that object so that whenever you invoke makeCard, you get a brand new credit card.
 
   //Code Here
+
+  let makeCard = (cardNumber, expirationDate, securityCode) => {
+     let card = {
+        cardNumber       : cardNumber,
+        expirationDate   : expirationDate,
+        securityCode     : securityCode
+     };
+
+     console.log(card);
+     return card;
+ }
 
 
 
@@ -210,3 +345,17 @@ object. One called 'alertHello' which alerts 'hello' and another method called l
 */
 
   //Code Here
+
+let bindCard = (person, creditcard) => {
+   let info = {};
+
+   for (let prop in person) {
+         info[prop] = person[prop];
+      }
+   for (let prop in creditcard) {
+         info[prop] = creditcard[prop];
+      }
+
+
+   return info;
+}
